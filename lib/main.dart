@@ -246,7 +246,96 @@ class _MyHomePageState extends State<MyHomePage> {
                           });
 
 
-                          print("apple,$A");
+                          if (P==0){
+                            showDialog(context: context, builder: (context){
+                              return Container(
+                                child: AlertDialog(
+                                  title: Text('Principle amount cannot be zero'),
+                                  actions: [
+                                    TextButton(onPressed: (){
+                                      Navigator.pop(context);
+                                      _Principle.clear();
+                                    }, child: Text("Okay"))
+                                  ],
+                                ),
+                              );
+                            });
+
+                          }
+
+                          else if(P<0){
+                            showDialog(context: context, builder: (context){
+                              return Container(
+                                child: AlertDialog(
+                                  title: Text('Principle amount cannot be less than zero'),
+                                  actions: [
+                                    TextButton(onPressed: (){
+                                      Navigator.pop(context);
+                                      _Principle.clear();
+                                    }, child: Text("Okay"))
+                                  ],
+                                ),
+                              );
+                            });
+                          }
+                          else if(int.parse(_Interest.text)>=100){
+                            showDialog(context: context, builder: (context){
+                              return Container(
+                                child: AlertDialog(
+                                  title: Text('Interest rate should be less than hundred'),
+                                  actions: [
+                                    TextButton(onPressed: (){
+                                      Navigator.pop(context);
+                                      _Interest.clear();
+                                    }, child: Text("Okay"))
+                                  ],
+                                ),
+                              );
+                            });
+                          }
+
+                          else if(int.parse(_Interest.text)<=0){
+                            showDialog(context: context, builder: (context){
+                              return Container(
+                                child: AlertDialog(
+                                  title: Text('Interest rate should be a positive number'),
+                                  actions: [
+                                    TextButton(onPressed: (){
+                                      Navigator.pop(context);
+                                      _Interest.clear();
+                                    }, child: Text("Okay"))
+                                  ],
+                                ),
+                              );
+                            });
+                          }
+
+                          else if(int.parse(_Tenur.text)<=0){
+                            showDialog(context: context, builder: (context){
+                              return Container(
+                                child: AlertDialog(
+                                  title: Text('Time period should be a positive number'),
+                                  actions: [
+                                    TextButton(onPressed: (){
+                                      Navigator.pop(context);
+                                      _Tenur.clear();
+                                    }, child: Text("Okay"))
+                                  ],
+                                ),
+                              );
+                            });
+                          }
+
+                          else{A = (P * r * pow((1+r), n) / ( pow((1+r),n) -1));
+                          _Result = A.toStringAsFixed(2);
+
+                          };
+
+                          setState(() {
+
+                          });
+
+                        },
                         },
                         child: Container(
                           height: 50,
